@@ -46,9 +46,30 @@ const getAllCards = catchAsync(async (req, res) => {
     data: result.result,
   });
 });
+const getSingleCards = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await CardService.getSingleCardService(id);
+
+  if (!result) {
+    sendResponse(res, {
+      success: false,
+      statusCode: httpStatus.NOT_FOUND,
+      message: "No Data Found!",
+      data: [],
+    });
+  }
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "Single Card are  successfully!",
+    data: result,
+  });
+});
 
 
 export const CardController = {
   createCard,
   getAllCards,
+  getSingleCards,
 };

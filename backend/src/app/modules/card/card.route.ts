@@ -12,6 +12,7 @@ router.post(
   CardController.createCard
 );
 
+router.get("/:id", CardController.getSingleCards);
 router.get("", CardController.getAllCards);
 
 

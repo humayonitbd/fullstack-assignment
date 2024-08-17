@@ -33,19 +33,30 @@ const createCardServic = async (payload: TCard) => {
 };
 
 const getAllCardService = async (query: Record<string, unknown>) => {
-  const BookingProductQuery = new QueryBuilder(Card.find(), query)
+  const CardsQuery = new QueryBuilder(Card.find(), query)
     .search(["title", "description"])
     .filter()
     .sort()
-    .paginate()
     .fields();
 
-  const result = await BookingProductQuery.modelQuery;
-  const meta = await BookingProductQuery.countTotal();
+  const result = await CardsQuery.modelQuery;
+  const meta = await CardsQuery.countTotal();
   return { meta, result };
 };
+
+const getSingleCardService = async(payload:string)=>{
+    const isExists = await Card.findById(payload);
+    if(!isExists){
+        throw new AppError(400, "Card is not found!!")
+    }
+
+    const result = await Card.findOne({_id:payload});
+    return result;
+
+}
 
 export const CardService = {
   createCardServic,
   getAllCardService,
+  getSingleCardService,
 };
