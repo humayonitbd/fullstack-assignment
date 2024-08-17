@@ -35,10 +35,24 @@ const Cards = () => {
   return (
     <div>
       <div className="bg-white py-20  lg:w-9/12 mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-5 md:gap-14">
-          {allCards?.map((card) => (
-            <Card card={card} />
-          ))}
+        <div>
+          {allCards?.length === 0 ? (
+            <>
+              <div className="text-center">
+                <h2 className="font-semibold text-3xl">
+                  Sorry! Not Available!!
+                </h2>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-10 gap-5 md:gap-14">
+                {allCards?.map((card) => (
+                  <Card card={card} />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
