@@ -11,8 +11,8 @@ const HelpPage = () => {
     const fetchCards = async () => {
       try {
         const url = searchText
-          ? `https://backend-phi-mauve-24.vercel.app/api/v1/cards?searchTerm=${searchText}`
-          : "https://backend-phi-mauve-24.vercel.app/api/v1/cards";
+          ? `http://localhost:5000/api/v1/cards?searchTerm=${searchText}`
+          : "http://localhost:5000/api/v1/cards";
         const response = await fetch(url);
         const data = await response.json();
         setCards(data?.data || []);

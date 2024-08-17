@@ -7,9 +7,7 @@ const Cards = () => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await fetch(
-          "https://backend-phi-mauve-24.vercel.app/api/v1/cards"
-        );
+        const response = await fetch("http://localhost:5000/api/v1/cards");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

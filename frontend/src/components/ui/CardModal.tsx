@@ -16,16 +16,13 @@ const CardModal = () => {
     };
 
     try {
-      const res = await fetch(
-        "https://backend-phi-mauve-24.vercel.app/api/v1/cards",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(cardData),
-        }
-      );
+      const res = await fetch("http://localhost:5000/api/v1/cards", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cardData),
+      });
 
       const data = await res.json();
       setButtonLodding(false);

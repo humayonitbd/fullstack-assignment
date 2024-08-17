@@ -7,7 +7,7 @@ const CardDetails = () => {
   const [singleCard, setSingleCard] = useState<TCard | null>(null);
 
   useEffect(() => {
-    fetch(`https://backend-phi-mauve-24.vercel.app/api/v1/cards/${id}`)
+    fetch(`http://localhost:5000/api/v1/cards/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleCard(data?.data));
   }, []);
